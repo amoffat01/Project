@@ -1,13 +1,25 @@
+import org.junit.Test;
+import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
-public class ComputeEngineSmokeTest {
+public class ComputeEngineTest {
 
-    public static void main(String[] args) {
+    @Test
+    public void smokeTest() {
+       
         int inputValue = 5;
         ComputeEngine computeEngineMock = mock(ComputeEngine.class);
         when(computeEngineMock.compute(inputValue)).thenReturn("mockedResult");
+
       
         String result = computeEngineMock.compute(inputValue);
-      
-        verifySmokeTestResult(result);
+
+       
+        assertNotNull(result);
+        assertEquals("mockedResult", result);
+       
+
+    
+        verify(computeEngineMock).compute(inputValue);
     }
+}
