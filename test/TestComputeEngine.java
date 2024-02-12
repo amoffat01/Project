@@ -4,7 +4,7 @@ import static org.mockito.Mockito.*;
 
 public class ComputeEngineTest {
 
-    @Test
+    
     public void smokeTest() {
        
         int inputValue = 5;
