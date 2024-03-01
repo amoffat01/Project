@@ -1,14 +1,14 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class ComputationComponent {
+class ComputeComponent {
 
     public List<Long> calculateFactorials(List<Integer> inputIntegers) {
         List<Long> resultsOfFactorials = new ArrayList<>();
 
         for (int n : inputIntegers) {
             int factorial = calculateFactorial(n);
-            results.add(factorial);
+            WriteResult.add(factorial);
         }
 
         return resultsOfFactorials;

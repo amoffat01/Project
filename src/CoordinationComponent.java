@@ -10,10 +10,10 @@ public class CoordinationComponent {
         this.computeComponent = computeComponent;
     }
 
-    public ResultStatus startComputation(String inputLocation, String outputLocation) {
-        try {
+    public WriteResult startComputation(String inputLocation, String outputLocation) {
             List<Integer> inputIntegers = dataStorageComponent.readIntegers(inputLocation); //reading in the integers
             List<Long> results = computeComponent.calculateFactorials(inputIntegers); //passing integers to the computational component
             dataStorageComponent.writeResults(outputLocation, results); //ask for the data storage to write the results of the computation
+            return null;
     }
 }
