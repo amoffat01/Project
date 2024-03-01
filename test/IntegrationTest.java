@@ -7,6 +7,7 @@ public class IntegrationTest {
         TestInputConfig inputConfig = new TestInputConfig(initialInput);
         TestOutputConfig outputConfig = new TestOutputConfig();
         TestDataApi dataStore = new TestDataApi();
+        
         ComputeEngine computeEngine = new ComputeEngine();
     }
 }
