@@ -1,19 +1,23 @@
-import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
-public class CoordinationComponent {
+public class CoordinatorComponent {
+    private final ComputationComponent computationComponent;
+    private final ExecutorService executorService;
 
-    private DataStorageComponent dataStorageComponent;
-    private ComputeComponent computeComponent;
-
-    public CoordinationComponent(DataStorageComponent dataStorageComponent, ComputeComponent computeComponent) {
-        this.dataStorageComponent = dataStorageComponent;
-        this.computeComponent = computeComponent;
+    public CoordinatorComponent(ComputationComponent computationComponent, int threadPoolSize) {
+        this.computationComponent = computationComponent;
+        this.executorService = Executors.newFixedThreadPool(threadPoolSize);
     }
 
-    public ResultStatus startComputation(String inputLocation, String outputLocation) {
-        try {
-            List<Integer> inputIntegers = dataStorageComponent.readIntegers(inputLocation); //reading in the integers
-            List<Long> results = computeComponent.calculateFactorials(inputIntegers); //passing integers to the computational component
-            dataStorageComponent.writeResults(outputLocation, results); //ask for the data storage to write the results of the computation
+    public void startComputation() {
+
+        for (int i = 0; i < 10; i++) {
+            executorService.submit(() -> computationComponent.performComputation());
+        }
+    }
+
+    public void shutdown() {
+        executorService.shutdown();
     }
 }
